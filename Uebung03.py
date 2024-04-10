@@ -92,13 +92,17 @@ class Polygon(Figur):
  # Lösung Chatgpt 
 
     def umfang(self):
-        umfang = 0
+        u = 0
         for i in range(len(self.punkte)):
-            nächst_höherindex = (i + 1) % len(self.punkte) # % sorgt dafür, dass auch die Dinstanz zwischen ersten und letzten Punkt gebildet wird. Bep. 4 Elemente: i=3 -> (3+1)%4 => 0.tes bzw. erstes Element der Liste wird genommen und minus letztes (i=3) Element der Liste (i=3 ist letztes, weil Zählung bei 0 beginnt (0,1,2,3 <-4Elemente))
-            dist = ((self.punkte[nächst_höherindex].x - self.punkte[i].x)**2 + 
-                       (self.punkte[nächst_höherindex].y - self.punkte[i].y)**2)**0.5
-            umfang += dist
-        return umfang
+            j = i + 1
+            if j > len(self.punkte)-1:
+                j = 0
+
+        u = u + math.sqrt((self.punkte[i].x - self.punkte[j].x)**2 + 
+                          (self.punkte[i].y - self.punkte[j].y)**2)
+
+        return u
+
 
  # Lösung Chatgpt 
 
